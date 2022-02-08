@@ -1,4 +1,4 @@
-# dotfiles
+# My Linux dotfiles and configuration
 Linux dotfiles and various configuration files for i3, i3blocks, rofi and others.
 
 To set up a new host do the following:
