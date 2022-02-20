@@ -123,3 +123,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export PICO_SDK_PATH=/home/pi/projects/pico/pico-sdk
+export PICO_EXAMPLES_PATH=/home/pi/projects/pico/pico-examples
+export PICO_EXTRAS_PATH=/home/pi/projects/pico/pico-extras
+export PICO_PLAYGROUND_PATH=/home/pi/projects/pico/pico-playground
