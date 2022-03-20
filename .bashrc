@@ -127,3 +127,7 @@ export PICO_SDK_PATH=/home/pi/projects/pico/pico-sdk
 export PICO_EXAMPLES_PATH=/home/pi/projects/pico/pico-examples
 export PICO_EXTRAS_PATH=/home/pi/projects/pico/pico-extras
 export PICO_PLAYGROUND_PATH=/home/pi/projects/pico/pico-playground
+export PICO_SDK_PATH=/home/tylerm/projects/pico/pico-sdk
+export PICO_EXAMPLES_PATH=/home/tylerm/projects/pico/pico-examples
+export PICO_EXTRAS_PATH=/home/tylerm/projects/pico/pico-extras
+export PICO_PLAYGROUND_PATH=/home/tylerm/projects/pico/pico-playground

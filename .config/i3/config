@@ -26,14 +26,6 @@ font pango:Ubuntu 10
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# startup
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/lainblue.jpg
-#exec_always --no-startup-id picom --vsync --backend glx
-
 # window borders
 default_border normal
 default_floating_border normal
@@ -51,9 +43,8 @@ for_window [window_role="pop-up"] floating enable border normal
 #Print screen
 bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshot/'
 
-# Pulse Audio controls
-# Use pactl to adjust volume in PulseAudio.
-#set $refresh_i3status killall -SIGUSR1 i3blocks
+# Pulse Audio volume/mute controls
+# Use pactl to adjust volume in PulseAudio. We have to send a signal to i3blocks to make any change.
 set $refresh_i3status pkill -RTMIN+1 i3blocks
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
@@ -96,10 +87,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show drun
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+i focus up
-bindsym $mod+l focus right
+#bindsym $mod+j focus left
+#bindsym $mod+k focus down
+#bindsym $mod+i focus up
+#bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -108,10 +99,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+i move up
-bindsym $mod+Shift+l move right
+#bindsym $mod+Shift+j move left
+#bindsym $mod+Shift+k move down
+#bindsym $mod+Shift+i move up
+#bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -194,9 +185,6 @@ bindsym $mod+Shift+r restart
 #rofi exit
 bindsym $mod+shift+e exec ~/.config/i3/rofi-close-i3.sh
 
-#lock
-bindsym $mod+shift+x exec i3lock --color=5c5c73
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -205,10 +193,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
-        bindsym semicolon resize grow width 5 px or 5 ppt
+        #bindsym j resize shrink width 5 px or 5 ppt
+        #bindsym k resize grow height 5 px or 5 ppt
+        #bindsym l resize shrink height 5 px or 5 ppt
+        #bindsym semicolon resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 5 px or 5 ppt
@@ -224,7 +212,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#Color Set
+# Colours for interface elements
+# Color Set
 set $bg-color                   #2f343f
 set $active-bg-color            #5c5c73
 set $inactive-bg-color          #2f343f
@@ -245,6 +234,9 @@ client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-co
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $indicator-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $indicator-color
 
+#lock
+bindsym $mod+shift+x exec i3lock --color=$active-bg-color
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -262,6 +254,15 @@ bar {
 
 }
 
-# autostart
-#exec --no-startup-id xautolock -time 8 -locker 'i3lock -c 010410'
-exec --no-startup-id i3-msg 'workspace 1;exec i3-sensible-terminal'
+# Startup: 
+# Commands which always run, even on i3 reload.
+
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/lainblue.jpg
+#exec_always --no-startup-id picom --vsync --backend glx
+
+# Autostart commands on i3 start.
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xautolock -time 8 -locker 'i3lock -c 010410'
+exec --no-startup-id i3-msg 'workspace 1;exec i3-sensible-terminal;exec i3-sensible-terminal'
