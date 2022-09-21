@@ -269,4 +269,4 @@ exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/lainblue.jpg
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id xautolock -time 8 -locker 'i3lock -c 010410'
 exec --no-startup-id i3-msg 'workspace 1;exec i3-sensible-terminal;exec i3-sensible-terminal'
-#exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
