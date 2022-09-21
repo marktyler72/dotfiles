@@ -1,3 +1,2 @@
 [Desktop]
-#Session=lightdm-xsession
 Session=i3
