@@ -47,7 +47,7 @@ Xft*rgba:			rgb
 
 !URxvt------------------------
 !URxvt.font: xft:ubuntu mono:pixelsize=14, xft:Font Awesome 5 Free-Regular-400:size=14, xft:FontAwesome:size=12
-URxvt.font: xft:noto mono:pixelsize=14
+URxvt.font: xft:noto mono:size=11
 URxvt.boldFont:
 URxvt.italicFont:
 URxvt.boldItalicFont:
